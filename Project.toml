@@ -1,9 +1,15 @@
 name = "AstroFluxUtil"
 uuid = "ec2037fe-dd9f-4d31-b5e7-ac8e50243201"
-authors = ["Noah Franz"]
 version = "1.0.0-DEV"
+authors = ["Noah Franz"]
+
+[deps]
+Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
+UnitfulAstro = "6112ee07-acf9-5e0f-b108-d242c714bf9f"
 
 [compat]
+Unitful = "1.25.1"
+UnitfulAstro = "1.2.2"
 julia = "1.6.7"
 
 [extras]
