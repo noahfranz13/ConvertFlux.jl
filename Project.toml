@@ -1,4 +1,4 @@
-name = "AstroFluxUtil"
+name = "ConvertFlux"
 uuid = "ec2037fe-dd9f-4d31-b5e7-ac8e50243201"
 version = "1.0.0-DEV"
 authors = ["Noah Franz"]

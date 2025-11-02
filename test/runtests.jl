@@ -1,4 +1,4 @@
-using AstroFluxUtil
+using ConvertFlux
 using Test
 
 @testset "AstroFluxUtil.jl" begin

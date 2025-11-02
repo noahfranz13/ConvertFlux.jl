@@ -9,3 +9,6 @@ A package for quick conversions of astronomy flux/flux density/magnitude units. 
 4. Converting between any of the above three for any photometry at any wavelength/frequency. 
 
 This package is written in julia to make it **fast**, but I will add python wrappers once a basic version of the julia code is written.
+
+### A note on the Filters used
+The `src/filters` directory was initially copied from https://github.com/griffin-h/lightcurve_fitting and much of the `Filter` struct code was heavily influenced by how filters are handled in that package. Anyone that uses the Filters in this package should also cite https://zenodo.org/records/11405219 
