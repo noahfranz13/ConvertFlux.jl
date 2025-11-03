@@ -42,9 +42,13 @@ function Filter(
     transmission_wav, transmission = read_transmission_curve(filename)
 
     # calculate some other properties
-    min_wav = min(transmission_wav...)
-    max_wav = max(transmission_wav...)
-
+    min_wav = 0
+    max_wav = Inf
+    if length(filename) > 0
+        min_wav = min(transmission_wav...)
+        max_wav = max(transmission_wav...)
+    end
+    
     # construct a new Filter struct
     Filter(
         name,
@@ -67,8 +71,32 @@ end
 """
 construct a filter from a file with the transmission function
 """
-function read_transmission_curve(filepath)
-    return ([1,2,3],[1,2,3])    
+function read_transmission_curve(filename)
+    currdir = dirname(@__FILE__)
+    lines = open("$currdir/filters/$filename") do file
+        readlines(file)
+    end
+
+    wavs = []
+    transmissions = []
+    for line in lines
+        if occursin(",", line)
+            wav, transmission = split(line, ",")
+        else
+            wav, transmission = split(line)
+        end
+
+        try
+            append!(wavs, parse(Float64, wav))
+            append!(transmissions, parse(Float64, transmission))
+        catch e
+            if !(isa(e, ArgumentError))
+                throw(e)
+            end
+            continue # this just means there's a header row
+        end
+    end
+    return wavs, transmissions    
 end
 
 """
